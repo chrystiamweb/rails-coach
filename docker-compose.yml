@@ -7,7 +7,7 @@ services:
       dockerfile: DockerFile
     tty: true
     stdin_open: true
-    command: bash -c "rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
     volumes:
       - .:/rails-coach
     ports: ["3000:3000"]
