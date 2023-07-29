@@ -1,4 +1,4 @@
-<div id="<%= dom_id course %>"  class="lg:flex lg:items-center lg:justify-between">
+<div id="<%= dom_id course %>"  class="mt-5 lg:flex lg:items-center lg:justify-between">
   <div class="min-w-0 flex-2">
     <h2 class="text-2xl font-bold leading-6 text-gray-800 sm:truncate sm:text-3xl sm:tracking-tight"><%= course.name %></h2>
     <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
@@ -46,10 +46,15 @@
 
 </div>
 
-    <hr class="mt-6">
+<hr class="mt-6">
 
-<% if action_name == "show" %>
-  <%- course.lessons.each do |lesson| %>
-    <%= render "lessons/lesson", lesson: lesson %>
+<ol class="border-l-2 border-info-100">
+
+  <% if action_name == "show" %>
+    <%- course.lessons.each do |lesson| %>
+      <%= render "lessons/lesson", lesson: lesson %>
+
+    <% end %>
   <% end %>
-<% end %>
+
+</ol>
