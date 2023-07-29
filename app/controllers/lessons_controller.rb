@@ -25,7 +25,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully created." }
+        format.html { redirect_to course_lesson_path(@lesson), notice: "Lesson was successfully created." }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class LessonsController < ApplicationController
   def update
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully updated." }
+        format.html { redirect_to course_lesson_path(@lesson), notice: "Lesson was successfully updated." }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,13 +58,13 @@ class LessonsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lesson
-      @lesson = Lesson.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def lesson_params
-      params.fetch(:lesson, {})
-    end
+  def set_lesson
+    @lesson = Lesson.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def lesson_params
+    params.require(:lesson).permit(:name, :description, :course_id, :content)
+  end
 end
