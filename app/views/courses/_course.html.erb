@@ -1,4 +1,7 @@
 <div id="<%= dom_id course %>">
+  <div class="text-lg font-bold"><%= course.name %></div>
+  <div class="text-lg"><%= course.description %></div>
+  <div class="text-lg"><%= course.difficulty_level %></div>
   <% if action_name != "show" %>
     <%= link_to "Show this course", course, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this course', edit_course_path(course), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
