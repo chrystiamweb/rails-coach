@@ -1,12 +1,42 @@
 <div id="<%= dom_id lesson %>">
-  <div class="text-lg font-bold"><%= lesson.title %></div>
-  <div class="text-lg"><%= lesson.description %></div>
-  <div class="text-lg"><%= lesson.body %></div>
-  <% if controller_name == "courses" && action_name == "show" %>
-    <%= link_to "Show this lesson", course_lesson_path(lesson, lesson), class: "rounded-lg py-2 px-2 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this lesson', edit_course_lesson_path(lesson), class: "rounded-lg py-2 ml-2 px-2 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Delete thise lesson', course_lesson_path(lesson.course), method: "delete", class: "rounded-lg py-2 ml-2 px-2 bg-red-100 inline-block font-medium" %>
+  <li>
+    <div class="flex-start md:flex">
+      <div
+        class="-ml-[13px] flex h-[25px] w-[25px] items-center justify-center rounded-full bg-info-100 text-info-700">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-4 w-4">
+          <path
+            fill-rule="evenodd"
+            d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div
+        class="mb-10 ml-6 block max-w-6xl rounded-lg bg-neutral-50 p-6 shadow-md shadow-black/5 white:bg-neutral-500 dark:shadow-black/20">
+        <div class="mb-4 flex justify-between">
+          <a href="#!"class="text-sm text-info transition duration-150 ease-in-out hover:text-info-600 focus:text-info-600 active:text-info-700" >
+            <%= lesson.title %>
+          </a>
+          <a href="#!" class="text-sm text-info transition duration-150 ease-in-out hover:text-info-600 focus:text-info-600 active:text-info-700" >
+            <%= lesson.created_at %>
+          </a>
+        </div>
+        <p class="mb-6 text-neutral-700 dark:text-neutral-200">
+          <div class="text-lg"><%= lesson.description %></div>
+        </p>
+        <% if controller_name == "courses" && action_name == "show" %>
+         <%= link_to course_lesson_path(lesson, lesson),
+            type:"button",
+            class:"inline-block rounded bg-info px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal text-gray-600 shadow-[0_4px_9px_-4px_#54b4d3] transition duration-150 ease-in-out hover:bg-info-600 hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:bg-info-600 focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:outline-none focus:ring-0 active:bg-info-700 active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(84,180,211,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)]" do %>
 
-    <hr class="mt-6">
-  <% end %>
+            Start Lesson
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </li>
 </div>
+
