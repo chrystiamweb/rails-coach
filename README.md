@@ -1,13 +1,16 @@
 # README
 
-To start the project you need to run:
+## Get up and running
 
-```docker-compose build```
+### Running the application manually
 
-Create database
-
-```docker-compose run --rm web rails db:create```
-
-So you update your created tables and start running
-
-```docker-compose run --rm web rails db:migrate```
+You need a few requirements installed and configured on your machine:
+* Docker
+* Docker Compose
+### Docker Compose Startup
+``` bash
+sudo docker-compose build
+docker-compose run --rm web rails db:setup
+docker-compose up
+```
+You can now visit the application at [http://localhost:3000](http://localhost:3000)
