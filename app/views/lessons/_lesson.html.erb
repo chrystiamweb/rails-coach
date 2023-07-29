@@ -1,7 +1,12 @@
 <div id="<%= dom_id lesson %>">
-  <% if action_name != "show" %>
-    <%= link_to "Show this lesson", lesson, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this lesson', edit_lesson_path(lesson), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="text-lg font-bold"><%= lesson.title %></div>
+  <div class="text-lg"><%= lesson.description %></div>
+  <div class="text-lg"><%= lesson.body %></div>
+  <% if controller_name == "courses" && action_name == "show" %>
+    <%= link_to "Show this lesson", course_lesson_path(lesson, lesson), class: "rounded-lg py-2 px-2 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this lesson', edit_course_lesson_path(lesson), class: "rounded-lg py-2 ml-2 px-2 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Delete thise lesson', course_lesson_path(lesson.course), method: "delete", class: "rounded-lg py-2 ml-2 px-2 bg-red-100 inline-block font-medium" %>
+
     <hr class="mt-6">
   <% end %>
 </div>
