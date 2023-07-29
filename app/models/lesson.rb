@@ -1,3 +1,3 @@
 class Lesson < ApplicationRecord
-  belongs_to :courses, optional: true
+  belongs_to :courses
 end
