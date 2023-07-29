@@ -51,9 +51,17 @@
       </svg>
       <input class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter projects" placeholder="Filter projects...">
     </form>
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
-    </div>
+    <% if current_customer %>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <span class="text-sm font-semibold leading-6 text-gray-90"><%= current_customer.name %></span>
+      </div>
+    <% else %>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <%= link_to customer_session_path, class:'text-sm font-semibold leading-6 text-gray-90' do %>
+          Log in <span aria-hidden="true">&rarr;</span>
+        <% end %>
+      </div>
+    <% end %>
   </nav>
   <!-- Mobile menu, show/hide based on menu open state. -->
   <div class="lg:hidden" role="dialog" aria-modal="true">
@@ -103,7 +111,7 @@
             <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
           </div>
           <div class="py-6">
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+            <%= link_to "Log in", customer_session_path, class:'-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50' %>
           </div>
         </div>
       </div>
