@@ -1,7 +1,7 @@
 <header class="bg-white">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
+      <%= link_to root_path, class: "-m-1.5 p-1.5" do %>
         <span class="sr-only">Rails Coach</span>
         <?xml version="1.0" standalone="no"?>
         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
@@ -35,7 +35,7 @@
             67 700 49 109 70 104 87 -23z"/>
             </g>
           </svg>
-      </a>
+      <% end %>
     </div>
     <div class="flex lg:hidden">
       <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -52,9 +52,11 @@
       <input class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter projects" placeholder="Filter projects...">
     </form>
     <% if current_customer %>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <span class="text-sm font-semibold leading-6 text-gray-90"><%= current_customer.name %></span>
-      </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <%= link_to customer_path(current_customer), class:"text-sm font-semibold leading-6 text-gray-90" do %>
+            <%= current_customer.name %>
+          <% end %>
+        </div>
     <% else %>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <%= link_to customer_session_path, class:'text-sm font-semibold leading-6 text-gray-90' do %>
