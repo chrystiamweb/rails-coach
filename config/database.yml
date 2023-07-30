@@ -66,6 +66,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: rails_coach_production
   username: rails_coach
   password: <%= ENV["RAILS_COACH_DATABASE_PASSWORD"] %>
