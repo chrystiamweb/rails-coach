@@ -54,7 +54,7 @@
     <% if current_customer %>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
           <%= link_to customer_path(current_customer), class:"text-sm font-semibold leading-6 text-gray-90" do %>
-            <%= current_customer.name %>
+            <%= current_customer.email %>
           <% end %>
         </div>
     <% else %>

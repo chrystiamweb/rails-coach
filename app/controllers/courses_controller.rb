@@ -21,6 +21,7 @@ class CoursesController < ApplicationController
 
   # POST /courses or /courses.json
   def create
+    course_params = params.merge!(customer_id: current_user.id)
     @course = Course.new(course_params)
 
     respond_to do |format|
@@ -66,6 +67,6 @@ class CoursesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:name, :description, :user_id, :difficulty_level)
+    params.require(:course).permit(:name, :description, :customer_id, :difficulty_level)
   end
 end
