@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_29_231814) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_013923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,8 +86,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_231814) do
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_likes_on_course_id"
+    t.index ["customer_id"], name: "index_likes_on_customer_id"
+  end
+
+  create_table "list_courses", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_list_courses_on_course_id"
+    t.index ["customer_id"], name: "index_list_courses_on_customer_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "courses", "customers"
   add_foreign_key "lessons", "courses"
+  add_foreign_key "likes", "courses"
+  add_foreign_key "likes", "customers"
+  add_foreign_key "list_courses", "courses"
+  add_foreign_key "list_courses", "customers"
 end
